@@ -1,0 +1,68 @@
+You have the Snowflake MCP connected. Query Snowflake and sync my account tracker.
+
+Database: "reporting", Schema: "general". I'm a Commercial AE at Datadog; my Salesforce
+account data is synced to Snowflake.
+
+NOTE: Replace the {PLACEHOLDER} table names below with the real ones you found during
+schema discovery (see SNOWFLAKE_SYNC.md, Step 2). Do not run with placeholders.
+
+## QUERY 1: Accounts
+SELECT * FROM {ACCOUNTS_TABLE}
+WHERE owner_name = 'Connor Miller' OR owner_email LIKE '%connor.miller%';
+
+## QUERY 2: Latest Opportunities per Account
+SELECT account_id, account_name, opportunity_name, stage_name, amount, close_date, created_date
+FROM {OPPORTUNITIES_TABLE}
+WHERE account_id IN (SELECT id FROM {ACCOUNTS_TABLE} WHERE owner_name = 'Connor Miller')
+ORDER BY close_date DESC;
+
+## QUERY 3: Org Billing Info
+SELECT account_name, org_id, billing_plan_type, billing_plan_start_date, org_region
+FROM {ORG_TABLE}
+WHERE account_name IN (SELECT name FROM {ACCOUNTS_TABLE} WHERE owner_name = 'Connor Miller');
+
+## QUERY 4: Contact Count per Account
+SELECT account_id, COUNT(*) AS contact_count
+FROM {CONTACTS_TABLE}
+WHERE account_id IN (SELECT id FROM {ACCOUNTS_TABLE} WHERE owner_name = 'Connor Miller')
+GROUP BY account_id;
+
+## MERGE RULES — CRITICAL
+Read accounts_data.js for my current tracker data (the ACCTS array).
+
+NEVER overwrite these fields (they are MY manual research):
+- notes, statusNote, howTheyMakeMoney, whyAnything, whyNow, whyDatadog
+- flags, highlights, highlightLabels, tier overrides
+- timeline (tlv/tls), hiring personas, hiring URLs
+
+DO update these fields from Snowflake:
+- name (if changed in SF)
+- location (billing city/state/country)
+- employees (headcount)
+- industry
+- sfUrl (construct: "https://datadog.lightning.force.com/lightning/r/Account/{SF_ID}/view")
+- pastOpp (latest closed opp year + type)
+- description (SF account description, ONLY if my current one is blank)
+
+For NEW accounts in Snowflake not in my tracker:
+- Add them with Snowflake data + blank research fields
+- Print "[NEW] Account Name" so I can see what was added
+
+For accounts in my tracker NOT in Snowflake:
+- Keep them (they might be custom accounts I added manually)
+- Print "[NOT IN SF] Account Name" so I'm aware
+
+## OUTPUT
+1. Update accounts_data.js with merged data (keep the `const ACCTS = [...]` and
+   `const WEBSITES = {...}` shape, ending with `export { WEBSITES, ACCTS };`).
+2. Rebuild account_tracker.html from the updated accounts_data.js
+   (see README_REBUILD.md — inline ACCTS + WEBSITES into the <script type="text/babel">
+   block; do NOT change any app logic or the localStorage `att_` keys).
+3. Print a summary:
+   - Accounts synced: X
+   - New accounts added: X (list names)
+   - Accounts not in SF: X (list names)
+   - Fields updated: X changes across Y accounts
+   - Opportunities found: X open, Y closed
+4. Copy account_tracker.html to ~/Downloads/account_tracker.html (where Chrome reads it).
+   Adjust this path if your tracker lives elsewhere.
