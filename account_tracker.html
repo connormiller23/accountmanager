@@ -7,31 +7,31 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
   <style>
     :root {
-      --color-bg: #fafaf7;
-      --color-bg-secondary: #ffffff;
-      --color-bg-tertiary: #f5f4ee;
-      --color-bg-success: #f0fdf4;
-      --color-bg-warning: #fffbeb;
-      --color-background-info: #f0ede0;
-      --color-background-success: #f0fdf4;
-      --color-background-warning: #fffbeb;
-      --color-background-secondary: #f5f4ee;
-      --color-background-danger: #fef2f2;
-      --color-background-primary: #ffffff;
-      --color-border: #e8e6dc;
-      --color-border-info: #c8c5b3;
-      --color-border-secondary: #d4d1c2;
-      --color-border-tertiary: #b8b4a0;
-      --color-border-danger: #fecaca;
-      --color-border-success: #bbf7d0;
-      --color-border-warning: #fde68a;
-      --color-text-primary: #1a1a1a;
-      --color-text-secondary: #6b6b6b;
-      --color-text-tertiary: #999;
-      --color-text-info: #5a4a2a;
-      --color-text-danger: #991b1b;
-      --color-text-success: #166534;
-      --color-text-warning: #92400e;
+      --color-bg: #0f1117;
+      --color-bg-secondary: #181b23;
+      --color-bg-tertiary: #1d212b;
+      --color-bg-success: #102a1d;
+      --color-bg-warning: #2a2210;
+      --color-background-info: #1a2030;
+      --color-background-success: #102a1d;
+      --color-background-warning: #2a2210;
+      --color-background-secondary: #1d212b;
+      --color-background-danger: #2c1418;
+      --color-background-primary: #181b23;
+      --color-border: #272b36;
+      --color-border-info: #344056;
+      --color-border-secondary: #2c313d;
+      --color-border-tertiary: #373d4c;
+      --color-border-danger: #5e2a32;
+      --color-border-success: #1f4a36;
+      --color-border-warning: #4d3f1e;
+      --color-text-primary: #e6e8ee;
+      --color-text-secondary: #aab1bf;
+      --color-text-tertiary: #707888;
+      --color-text-info: #9db2d3;
+      --color-text-danger: #f87171;
+      --color-text-success: #4ade80;
+      --color-text-warning: #fbbf24;
       --border-radius-md: 6px;
       --border-radius-sm: 4px;
       --border-radius-lg: 8px;
@@ -58,8 +58,8 @@
       outline: none;
     }
     input:focus, textarea:focus, select:focus {
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+      border-color: #8b5cf6;
+      box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.25);
     }
     button { font-family: var(--font-sans); }
     a { color: inherit; }
@@ -77,13 +77,13 @@
 
     /* ===================== SaaS app shell ===================== */
     :root {
-      --brand: #7c3aed;
+      --brand: #8b5cf6;
       --brand-2: #6366f1;
-      --shell-bg: #eceef3;
-      --shell-card: #ffffff;
-      --shell-border: #e4e7ec;
-      --shell-ink: #14151a;
-      --shell-muted: #667085;
+      --shell-bg: #0f1117;
+      --shell-card: #181b23;
+      --shell-border: #272b36;
+      --shell-ink: #e6e8ee;
+      --shell-muted: #9aa1b0;
       --appbar-h: 58px;
     }
     body { background: var(--shell-bg); }
@@ -92,7 +92,7 @@
       position: sticky; top: 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
       height: var(--appbar-h); padding: 0 22px;
-      background: rgba(255,255,255,0.82);
+      background: rgba(17,19,26,0.72);
       -webkit-backdrop-filter: saturate(180%) blur(14px);
       backdrop-filter: saturate(180%) blur(14px);
       border-bottom: 1px solid var(--shell-border);
@@ -111,7 +111,7 @@
     .app-chip {
       display: inline-flex; align-items: center; gap: 6px;
       font-size: 12px; font-weight: 600; color: var(--shell-muted);
-      background: #f4f5f8; border: 1px solid var(--shell-border);
+      background: #1f2430; border: 1px solid var(--shell-border);
       padding: 5px 11px; border-radius: 999px;
     }
     .app-chip b { color: var(--shell-ink); font-weight: 700; }
@@ -133,7 +133,7 @@
     .kpi-sub { font-size: 11px; color: #98a2b3; margin-top: 3px; }
 
     .panel { background: var(--shell-card); border: 1px solid var(--shell-border); border-radius: 14px; box-shadow: 0 1px 3px rgba(16,24,40,0.05); overflow: hidden; }
-    .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 16px; border-bottom: 1px solid #eef0f3; }
+    .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 16px; border-bottom: 1px solid var(--shell-border); }
     .panel-title { font-size: 13px; font-weight: 700; color: var(--shell-ink); letter-spacing: -0.01em; }
     .panel-scroll { overflow: auto; max-height: calc(100vh - var(--appbar-h) - 360px); min-height: 320px; }
     .panel-scroll table thead th { position: sticky; top: 0; z-index: 6; }
@@ -355,7 +355,7 @@ function parseTimeline(s){
   return null;
 }
 
-const TIER_STYLE={A:{bg:"#dcfce7",c:"#15803d",border:"#86efac"},B:{bg:"#dbeafe",c:"#1d4ed8",border:"#93c5fd"},C:{bg:"#f3f4f6",c:"#6b7280",border:"#d1d5db"}};
+const TIER_STYLE={A:{bg:"rgba(34,197,94,0.16)",c:"#4ade80",border:"rgba(34,197,94,0.45)"},B:{bg:"rgba(96,165,250,0.16)",c:"#60a5fa",border:"rgba(96,165,250,0.45)"},C:{bg:"rgba(148,163,184,0.16)",c:"#cbd5e1",border:"rgba(148,163,184,0.4)"}};
 
 const FLAG_OPTS=[
   {val:"",     label:"—",         word:"—",       bg:"transparent",                        c:"var(--color-text-tertiary)"},
@@ -696,12 +696,12 @@ function AccountTracker(){
   const flaggedCount=rows.filter(r=>r.flag).length;
 
   const Hdr=({col,label,w})=>(
-    <th onClick={()=>doSort(col)} style={{width:w,minWidth:w,padding:"7px 8px",fontSize:11,fontWeight:500,cursor:"pointer",userSelect:"none",whiteSpace:"nowrap",background:"#f8f9fa",borderBottom:"2px solid #e5e7eb",color:sc===col?"#111827":"#6b7280",letterSpacing:"0.07em",textTransform:"uppercase"}}>
+    <th onClick={()=>doSort(col)} style={{width:w,minWidth:w,padding:"7px 8px",fontSize:11,fontWeight:500,cursor:"pointer",userSelect:"none",whiteSpace:"nowrap",background:"var(--color-background-secondary)",borderBottom:"1px solid var(--color-border)",color:sc===col?"var(--color-text-primary)":"var(--color-text-secondary)",letterSpacing:"0.07em",textTransform:"uppercase"}}>
       {label}{sc===col?(sd==="asc"?" ↑":" ↓"):""}
     </th>
   );
   const SHdr=({label,w})=>(
-    <th style={{width:w,minWidth:w,padding:"8px 8px",fontSize:10,fontWeight:700,background:"#f8f9fa",borderBottom:"2px solid #e5e7eb",color:"#6b7280",letterSpacing:"0.07em",textTransform:"uppercase"}}>{label}</th>
+    <th style={{width:w,minWidth:w,padding:"8px 8px",fontSize:10,fontWeight:700,background:"var(--color-background-secondary)",borderBottom:"1px solid var(--color-border)",color:"var(--color-text-secondary)",letterSpacing:"0.07em",textTransform:"uppercase"}}>{label}</th>
   );
 
 
@@ -911,7 +911,7 @@ function AccountTracker(){
               const ts=TIER_STYLE[acc.tier];
               const hl=highlights[acc.id];
               const hlBg=hl==="red"?"rgba(239,68,68,0.12)":hl==="yellow"?"rgba(234,179,8,0.15)":hl==="blue"?"rgba(59,130,246,0.12)":"";
-              const rowBg=hlBg||(fi.val?fi.bg:rowIdx%2===1?"rgba(0,0,0,0.025)":"");
+              const rowBg=hlBg||(fi.val?fi.bg:rowIdx%2===1?"rgba(255,255,255,0.022)":"");
               return [
                 <tr key={acc.id} style={{borderBottom:isExp?"none":"0.5px solid var(--color-border-tertiary)",background:rowBg||"transparent",cursor:"pointer",transition:"background 0.1s"}}
                   onMouseEnter={e=>e.currentTarget.style.background=fi.val?fi.bg:"rgba(59,130,246,0.08)"}
@@ -956,7 +956,7 @@ function AccountTracker(){
                             {acc.displayName}
                           </span>
                           <a href={acc.sfUrlEff} target="_blank" rel="noopener noreferrer" onClick={e=>e.stopPropagation()}
-                            style={{fontSize:10,color:"#1d4ed8",textDecoration:"none",padding:"0 3px",borderRadius:3,background:"#eff6ff"}}
+                            style={{fontSize:10,color:"#60a5fa",textDecoration:"none",padding:"0 3px",borderRadius:3,background:"rgba(96,165,250,0.14)"}}
                             title="Open in Salesforce">↗</a>
                         </span>
                       ):<span style={{fontWeight:600,fontSize:13,lineHeight:1.3,cursor:"text"}}
@@ -1016,7 +1016,7 @@ function AccountTracker(){
                         style={{cursor:"text",minHeight:18}}>
                         {acc.tlData.date?(
                           <div>
-                            <div style={{fontSize:12,color:"#1d4ed8",fontWeight:600,lineHeight:1.3}}>{acc.tlData.date}</div>
+                            <div style={{fontSize:12,color:"#60a5fa",fontWeight:600,lineHeight:1.3}}>{acc.tlData.date}</div>
                             {acc.tlData.contact&&<div style={{fontSize:10,color:"var(--color-text-secondary)",lineHeight:1.3,marginTop:2}}>{acc.tlData.contact}</div>}
                             {acc.tlData.reason&&<div style={{fontSize:10,color:"var(--color-text-tertiary)",lineHeight:1.3,marginTop:1,overflow:"hidden",display:"-webkit-box",WebkitLineClamp:2,WebkitBoxOrient:"vertical"}}>{acc.tlData.reason}</div>}
                           </div>
@@ -1099,7 +1099,7 @@ function AccountTracker(){
                         <input placeholder="Hiring URL (optional)" defaultValue={acc.hiringUrl||""}
                           onBlur={e=>{setAndPersist(setHpUrls,"hpUrls",p=>({...p,[acc.id]:e.target.value}));}}
                           onKeyDown={e=>{if(e.key==="Enter"){setAndPersist(setHpUrls,"hpUrls",p=>({...p,[acc.id]:e.target.value}));commit();}if(e.key==="Escape"){setEdit(null);setTmp("");}}}
-                          onClick={e=>e.stopPropagation()} style={{fontSize:9,width:"100%",padding:"2px 4px",boxSizing:"border-box",color:"#1d4ed8"}}/>
+                          onClick={e=>e.stopPropagation()} style={{fontSize:9,width:"100%",padding:"2px 4px",boxSizing:"border-box",color:"#60a5fa"}}/>
                       </div>
                     ):acc.displayHp?(
                       <div style={{display:"flex",alignItems:"flex-start",gap:4}}>
@@ -1109,7 +1109,7 @@ function AccountTracker(){
                           {acc.displayHp}
                         </div>
                         {acc.hiringUrl&&<a href={acc.hiringUrl} target="_blank" rel="noopener noreferrer" onClick={e=>e.stopPropagation()}
-                          style={{fontSize:10,color:"#1d4ed8",textDecoration:"none",padding:"0 3px",borderRadius:3,background:"#eff6ff",flexShrink:0}}
+                          style={{fontSize:10,color:"#60a5fa",textDecoration:"none",padding:"0 3px",borderRadius:3,background:"rgba(96,165,250,0.14)",flexShrink:0}}
                           title="Open hiring page">↗</a>}
                       </div>
                     ):<span onDoubleClick={e=>{e.stopPropagation();startEdit(acc.id,"hp","",e);}} style={{color:"var(--color-text-tertiary)",fontSize:11,cursor:"text"}} title="Double-click to add">—</span>}

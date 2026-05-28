@@ -39,7 +39,7 @@ function parseTimeline(s){
   return null;
 }
 
-const TIER_STYLE={A:{bg:"#dcfce7",c:"#15803d",border:"#86efac"},B:{bg:"#dbeafe",c:"#1d4ed8",border:"#93c5fd"},C:{bg:"#f3f4f6",c:"#6b7280",border:"#d1d5db"}};
+const TIER_STYLE={A:{bg:"rgba(34,197,94,0.16)",c:"#4ade80",border:"rgba(34,197,94,0.45)"},B:{bg:"rgba(96,165,250,0.16)",c:"#60a5fa",border:"rgba(96,165,250,0.45)"},C:{bg:"rgba(148,163,184,0.16)",c:"#cbd5e1",border:"rgba(148,163,184,0.4)"}};
 
 const FLAG_OPTS=[
   {val:"",     label:"—",         word:"—",       bg:"transparent",                        c:"var(--color-text-tertiary)"},
@@ -380,12 +380,12 @@ export default function AccountTracker(){
   const flaggedCount=rows.filter(r=>r.flag).length;
 
   const Hdr=({col,label,w})=>(
-    <th onClick={()=>doSort(col)} style={{width:w,minWidth:w,padding:"7px 8px",fontSize:11,fontWeight:500,cursor:"pointer",userSelect:"none",whiteSpace:"nowrap",background:"#f8f9fa",borderBottom:"2px solid #e5e7eb",color:sc===col?"#111827":"#6b7280",letterSpacing:"0.07em",textTransform:"uppercase"}}>
+    <th onClick={()=>doSort(col)} style={{width:w,minWidth:w,padding:"7px 8px",fontSize:11,fontWeight:500,cursor:"pointer",userSelect:"none",whiteSpace:"nowrap",background:"var(--color-background-secondary)",borderBottom:"1px solid var(--color-border)",color:sc===col?"var(--color-text-primary)":"var(--color-text-secondary)",letterSpacing:"0.07em",textTransform:"uppercase"}}>
       {label}{sc===col?(sd==="asc"?" ↑":" ↓"):""}
     </th>
   );
   const SHdr=({label,w})=>(
-    <th style={{width:w,minWidth:w,padding:"8px 8px",fontSize:10,fontWeight:700,background:"#f8f9fa",borderBottom:"2px solid #e5e7eb",color:"#6b7280",letterSpacing:"0.07em",textTransform:"uppercase"}}>{label}</th>
+    <th style={{width:w,minWidth:w,padding:"8px 8px",fontSize:10,fontWeight:700,background:"var(--color-background-secondary)",borderBottom:"1px solid var(--color-border)",color:"var(--color-text-secondary)",letterSpacing:"0.07em",textTransform:"uppercase"}}>{label}</th>
   );
 
 
@@ -595,7 +595,7 @@ export default function AccountTracker(){
               const ts=TIER_STYLE[acc.tier];
               const hl=highlights[acc.id];
               const hlBg=hl==="red"?"rgba(239,68,68,0.12)":hl==="yellow"?"rgba(234,179,8,0.15)":hl==="blue"?"rgba(59,130,246,0.12)":"";
-              const rowBg=hlBg||(fi.val?fi.bg:rowIdx%2===1?"rgba(0,0,0,0.025)":"");
+              const rowBg=hlBg||(fi.val?fi.bg:rowIdx%2===1?"rgba(255,255,255,0.022)":"");
               return [
                 <tr key={acc.id} style={{borderBottom:isExp?"none":"0.5px solid var(--color-border-tertiary)",background:rowBg||"transparent",cursor:"pointer",transition:"background 0.1s"}}
                   onMouseEnter={e=>e.currentTarget.style.background=fi.val?fi.bg:"rgba(59,130,246,0.08)"}
@@ -640,7 +640,7 @@ export default function AccountTracker(){
                             {acc.displayName}
                           </span>
                           <a href={acc.sfUrlEff} target="_blank" rel="noopener noreferrer" onClick={e=>e.stopPropagation()}
-                            style={{fontSize:10,color:"#1d4ed8",textDecoration:"none",padding:"0 3px",borderRadius:3,background:"#eff6ff"}}
+                            style={{fontSize:10,color:"#60a5fa",textDecoration:"none",padding:"0 3px",borderRadius:3,background:"rgba(96,165,250,0.14)"}}
                             title="Open in Salesforce">↗</a>
                         </span>
                       ):<span style={{fontWeight:600,fontSize:13,lineHeight:1.3,cursor:"text"}}
@@ -700,7 +700,7 @@ export default function AccountTracker(){
                         style={{cursor:"text",minHeight:18}}>
                         {acc.tlData.date?(
                           <div>
-                            <div style={{fontSize:12,color:"#1d4ed8",fontWeight:600,lineHeight:1.3}}>{acc.tlData.date}</div>
+                            <div style={{fontSize:12,color:"#60a5fa",fontWeight:600,lineHeight:1.3}}>{acc.tlData.date}</div>
                             {acc.tlData.contact&&<div style={{fontSize:10,color:"var(--color-text-secondary)",lineHeight:1.3,marginTop:2}}>{acc.tlData.contact}</div>}
                             {acc.tlData.reason&&<div style={{fontSize:10,color:"var(--color-text-tertiary)",lineHeight:1.3,marginTop:1,overflow:"hidden",display:"-webkit-box",WebkitLineClamp:2,WebkitBoxOrient:"vertical"}}>{acc.tlData.reason}</div>}
                           </div>
@@ -783,7 +783,7 @@ export default function AccountTracker(){
                         <input placeholder="Hiring URL (optional)" defaultValue={acc.hiringUrl||""}
                           onBlur={e=>{setAndPersist(setHpUrls,"hpUrls",p=>({...p,[acc.id]:e.target.value}));}}
                           onKeyDown={e=>{if(e.key==="Enter"){setAndPersist(setHpUrls,"hpUrls",p=>({...p,[acc.id]:e.target.value}));commit();}if(e.key==="Escape"){setEdit(null);setTmp("");}}}
-                          onClick={e=>e.stopPropagation()} style={{fontSize:9,width:"100%",padding:"2px 4px",boxSizing:"border-box",color:"#1d4ed8"}}/>
+                          onClick={e=>e.stopPropagation()} style={{fontSize:9,width:"100%",padding:"2px 4px",boxSizing:"border-box",color:"#60a5fa"}}/>
                       </div>
                     ):acc.displayHp?(
                       <div style={{display:"flex",alignItems:"flex-start",gap:4}}>
@@ -793,7 +793,7 @@ export default function AccountTracker(){
                           {acc.displayHp}
                         </div>
                         {acc.hiringUrl&&<a href={acc.hiringUrl} target="_blank" rel="noopener noreferrer" onClick={e=>e.stopPropagation()}
-                          style={{fontSize:10,color:"#1d4ed8",textDecoration:"none",padding:"0 3px",borderRadius:3,background:"#eff6ff",flexShrink:0}}
+                          style={{fontSize:10,color:"#60a5fa",textDecoration:"none",padding:"0 3px",borderRadius:3,background:"rgba(96,165,250,0.14)",flexShrink:0}}
                           title="Open hiring page">↗</a>}
                       </div>
                     ):<span onDoubleClick={e=>{e.stopPropagation();startEdit(acc.id,"hp","",e);}} style={{color:"var(--color-text-tertiary)",fontSize:11,cursor:"text"}} title="Double-click to add">—</span>}

@@ -1,29 +1,29 @@
 :root {
-  --color-bg: #fafaf7;
-  --color-bg-secondary: #ffffff;
-  --color-bg-tertiary: #f5f4ee;
-  --color-bg-success: #f0fdf4;
-  --color-bg-warning: #fffbeb;
-  --color-background-info: #f0ede0;
-  --color-background-success: #f0fdf4;
-  --color-background-warning: #fffbeb;
-  --color-background-secondary: #f5f4ee;
-  --color-background-danger: #fef2f2;
-  --color-background-primary: #ffffff;
-  --color-border: #e8e6dc;
-  --color-border-info: #c8c5b3;
-  --color-border-secondary: #d4d1c2;
-  --color-border-tertiary: #b8b4a0;
-  --color-border-danger: #fecaca;
-  --color-border-success: #bbf7d0;
-  --color-border-warning: #fde68a;
-  --color-text-primary: #1a1a1a;
-  --color-text-secondary: #6b6b6b;
-  --color-text-tertiary: #999;
-  --color-text-info: #5a4a2a;
-  --color-text-danger: #991b1b;
-  --color-text-success: #166534;
-  --color-text-warning: #92400e;
+  --color-bg: #0f1117;
+  --color-bg-secondary: #181b23;
+  --color-bg-tertiary: #1d212b;
+  --color-bg-success: #102a1d;
+  --color-bg-warning: #2a2210;
+  --color-background-info: #1a2030;
+  --color-background-success: #102a1d;
+  --color-background-warning: #2a2210;
+  --color-background-secondary: #1d212b;
+  --color-background-danger: #2c1418;
+  --color-background-primary: #181b23;
+  --color-border: #272b36;
+  --color-border-info: #344056;
+  --color-border-secondary: #2c313d;
+  --color-border-tertiary: #373d4c;
+  --color-border-danger: #5e2a32;
+  --color-border-success: #1f4a36;
+  --color-border-warning: #4d3f1e;
+  --color-text-primary: #e6e8ee;
+  --color-text-secondary: #aab1bf;
+  --color-text-tertiary: #707888;
+  --color-text-info: #9db2d3;
+  --color-text-danger: #f87171;
+  --color-text-success: #4ade80;
+  --color-text-warning: #fbbf24;
   --border-radius-md: 6px;
   --border-radius-sm: 4px;
   --border-radius-lg: 8px;
@@ -50,8 +50,8 @@ input, textarea, select {
   outline: none;
 }
 input:focus, textarea:focus, select:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.25);
 }
 button { font-family: var(--font-sans); }
 a { color: inherit; }
@@ -69,13 +69,13 @@ a { color: inherit; }
 
 /* ===================== SaaS app shell ===================== */
 :root {
-  --brand: #7c3aed;
+  --brand: #8b5cf6;
   --brand-2: #6366f1;
-  --shell-bg: #eceef3;
-  --shell-card: #ffffff;
-  --shell-border: #e4e7ec;
-  --shell-ink: #14151a;
-  --shell-muted: #667085;
+  --shell-bg: #0f1117;
+  --shell-card: #181b23;
+  --shell-border: #272b36;
+  --shell-ink: #e6e8ee;
+  --shell-muted: #9aa1b0;
   --appbar-h: 58px;
 }
 body { background: var(--shell-bg); }
@@ -84,7 +84,7 @@ body { background: var(--shell-bg); }
   position: sticky; top: 0; z-index: 200;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
   height: var(--appbar-h); padding: 0 22px;
-  background: rgba(255,255,255,0.82);
+  background: rgba(17,19,26,0.72);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
   backdrop-filter: saturate(180%) blur(14px);
   border-bottom: 1px solid var(--shell-border);
@@ -103,7 +103,7 @@ body { background: var(--shell-bg); }
 .app-chip {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 12px; font-weight: 600; color: var(--shell-muted);
-  background: #f4f5f8; border: 1px solid var(--shell-border);
+  background: #1f2430; border: 1px solid var(--shell-border);
   padding: 5px 11px; border-radius: 999px;
 }
 .app-chip b { color: var(--shell-ink); font-weight: 700; }
@@ -125,7 +125,7 @@ body { background: var(--shell-bg); }
 .kpi-sub { font-size: 11px; color: #98a2b3; margin-top: 3px; }
 
 .panel { background: var(--shell-card); border: 1px solid var(--shell-border); border-radius: 14px; box-shadow: 0 1px 3px rgba(16,24,40,0.05); overflow: hidden; }
-.panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 16px; border-bottom: 1px solid #eef0f3; }
+.panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 16px; border-bottom: 1px solid var(--shell-border); }
 .panel-title { font-size: 13px; font-weight: 700; color: var(--shell-ink); letter-spacing: -0.01em; }
 .panel-scroll { overflow: auto; max-height: calc(100vh - var(--appbar-h) - 360px); min-height: 320px; }
 .panel-scroll table thead th { position: sticky; top: 0; z-index: 6; }
