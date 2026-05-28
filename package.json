@@ -1,0 +1,20 @@
+{
+  "name": "connors-account-tracker",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Connor's Account Tracker — React app for tracking 105 accounts.",
+  "scripts": {
+    "dev": "vite --port 8000 --host",
+    "build": "vite build",
+    "preview": "vite preview --port 8000 --host"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.11"
+  }
+}
